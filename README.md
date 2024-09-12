@@ -13,7 +13,7 @@ The answer might shock you:
 
 *i just think it's really fucking funny ok*
 
-This is still in EARLY WIP, and I'm not sure I'll be able to do everything I want with this project. I'm mostly doing it for the bit, but at the same point I want to use it to write my own website.
+This is still in EARLY WIP, and I'm not sure I'll be able to do everything I want with this project. I'm mostly doing it for the bit, but at the same time I want to use it to write my own website.
 
 ###### somebody please stop me i have suffered enough already
 
