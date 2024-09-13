@@ -5,7 +5,7 @@
   "main": "src/6502.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "minify": "minify src/6502web.js > dist/6502web.min.js",
+    "minify": "minify src/6502web.js > dist/6502web.min.js"
   },
   "keywords": ["6502", "assembly", "runtime"],
   "author": "Cassiopeias",
