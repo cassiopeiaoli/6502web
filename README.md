@@ -26,7 +26,7 @@ Oh and load it into your .html file don't forget that
 ## Loading your .bin file
 Your assembled 6502 binary can be loaded like this:
 
-<code>LOAD_6502("file.bin").then(res => res.run([], { log: true }));</code>
+<code>LOAD_6502("file.bin").then(res => res.run({ log: true, sharedMemory: [] }));</code>
 
 The empty array we're passing is your **shared memory**.
 
@@ -34,9 +34,9 @@ The empty array we're passing is your **shared memory**.
 
 This dubious piece of technology supports shared memory between 6502 and JS. You pass the shared memory while running the program, like such:
 
-<code>LOAD_6502("file.bin").then(res => res.run([
+<code>LOAD_6502("file.bin").then(res => res.run({ log: true, sharedMemory: [
     "Hi i'm in memory!", "Please let me out", () => "I don't want to be here!"
-], { log: true }));</code>
+] }));</code>
 
 Then those fields can be loaded into the accumulator. Shared memory has only
 10 fields, so use them as best as you can!
@@ -88,3 +88,7 @@ ___
 
 *$47* should store INDEX of the function from shared memory that should be called upon event detection.
 
+___
+
+### $3
+#### Move to element's parent

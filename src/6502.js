@@ -1,3 +1,6 @@
+const SHARED_MEMORY_START = 0x32;
+const SHARED_MEMORY_END = 0x3c;
+
 const htmlElements = [
     "p", 'b', 'i', 'span', 'button'
 ];
@@ -13,7 +16,6 @@ class Program {
     #stack
     #pc = 0
     #accumulator = 0;
-    #sharedMemoryAccumulator = null;
     #x = 0;
     #y = 0;
     #pos = false;
@@ -42,12 +44,12 @@ class Program {
 
     runBuiltinFunction(address) {
         switch (address) {
-            case 0:
+            case 0:  // create element
                 const element = document.createElement(this.numberToHTMLElement(this.#memory[70]));
                 this.#lastElement.appendChild(element);
                 this.#lastElement = element;
                 break;
-            case 1:
+            case 1:  // update text content
                 if (typeof this.#accumulator === 'string') {
                     this.#lastElement.textContent = this.#accumulator;
                     return;
@@ -62,7 +64,7 @@ class Program {
                 
                 this.#lastElement.textContent = string;
                 break;
-            case 2:
+            case 2: // add event listener
                 const event = this.numberToHTMLEvent(this.#memory[70]);
                 const functionIndex = this.#memory[71];
 
@@ -70,15 +72,19 @@ class Program {
                     throw new Error("You are trying to set up an event listener on a null element.");
                 }
 
-                console.log(event, functionIndex);
                 this.#lastElement.addEventListener(event, this.#sharedMemory[functionIndex]);
+                break;
+            case 3: // move to element's parent
+                if (this.#lastElement !== document.body) {
+                    this.#lastElement = this.#lastElement.parentElement();
+                }
                 break;
         }
     }
 
-    run(initialSharedMemory, config = {}) {
+    run(config = {}) {
         this.#config = config;
-        this.#sharedMemory = initialSharedMemory;
+        this.#sharedMemory = this.#config.sharedMemory;
         while (this.#pc < this.#buffer.length) {
             
             switch (this.#buffer[this.#pc]) {
@@ -92,7 +98,7 @@ class Program {
                     const nextWord = this.#buffer[++this.#pc];
                     if (this.#config.log)
                         console.info("LDA $" + nextWord);
-                    this.#accumulator = (nextWord >= 50 && nextWord <= 60)
+                    this.#accumulator = (nextWord >= SHARED_MEMORY_START && nextWord <= SHARED_MEMORY_END)
                         ? this.#sharedMemory[nextWord - 50]
                         : this.#memory[nextWord];
 
