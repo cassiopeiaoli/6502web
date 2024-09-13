@@ -2,11 +2,11 @@ const SHARED_MEMORY_START = 0x32;
 const SHARED_MEMORY_END = 0x3c;
 
 const htmlElements = [
-    "p", 'b', 'i', 'span', 'button'
+    "p", 'b', 'i', 'span', 'button', "div", "h1", "h2", "h3", "h4", "h5", "h6"
 ];
 
 const jsEvents = [
-    "click"
+    "click", "mousedown", "mouseup", "dblclick", "mousemove", "mouseover", "mouseout", "mouseenter", "mouseleave"
 ];
 
 class Program {
@@ -78,6 +78,21 @@ class Program {
                 if (this.#lastElement !== document.body) {
                     this.#lastElement = this.#lastElement.parentElement();
                 }
+                break;
+            case 4: // set classname
+                if (typeof this.#accumulator === 'string') {
+                    this.#lastElement.className = this.#accumulator;
+                    return;
+                } 
+                const stringLength2 = this.#memory[70];
+                
+                if (!this.#lastElement) {
+                    throw new Error("You are trying to set className on a null element. Create an element and set text right after its creation");
+                }
+
+                const className = this.#memory.slice(71, 71 + stringLength2).map(s => String.fromCharCode(s)).join('');
+                
+                this.#lastElement.className = className;
                 break;
         }
     }

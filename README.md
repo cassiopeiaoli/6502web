@@ -20,8 +20,9 @@ This is still in EARLY WIP, and I'm not sure I'll be able to do everything I wan
 (also yes the borzoi in front of the trans flag IS the logo and i'm not changing it.)
 
 ## How to use:
-Just download the 6502.js file and put it in your scripts directory or whatever.
-Oh and load it into your .html file don't forget that
+By this *CDN*!
+
+https://cdn.jsdelivr.net/npm/6502web/dist/6502web.min.js
 
 ## Loading your .bin file
 Your assembled 6502 binary can be loaded like this:
@@ -64,6 +65,13 @@ Create an HTML Element and saves it as the recently created one
 3.  \<i>
 4.  \<span>
 5.  \<button>
+6.  \<div>
+7.  \<h1>
+8.  \<h2>
+9.  \<h3>
+10. \<h4>
+11. \<h5>
+12. \<h6>
 
 ___
 
@@ -85,6 +93,14 @@ ___
 
 *$46* should store numerical ID of the JS event you want to listen for, refer to this list:
 1.  click
+2.  mousedown
+3.  mouseup
+4.  dblckick
+5.  mousemove
+6.  mouseover
+7.  mouseout
+8.  mouseenter
+9.  mouseleave
 
 *$47* should store INDEX of the function from shared memory that should be called upon event detection.
 
@@ -92,3 +108,15 @@ ___
 
 ### $3
 #### Move to element's parent
+
+___
+
+### $4 [$46, ...]
+#### Add class name
+
+*$46* should store length of the string you want to set as the className of the recently created element
+
+Rest of the arguments should be ASCII codes for characters that will be read
+based on the value stored in *$46*
+
+If your accumulator has a loaded string (for example, from **shared memory**) it shall be used as the className of your recently created HTML element. This **WILL** ignore all of your passed arguments.
