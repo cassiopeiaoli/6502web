@@ -121,10 +121,32 @@ class Program {
                         this.#accumulator();
                     }
                     break
-                case 133:  // STA
+                case 0x85:  // STA
                     const target = this.#buffer[++this.#pc];
                     this.#memory[target] = this.#accumulator;
                     this.runBuiltinFunction(target);
+                    break;
+                case 0xAA:  // TAX
+                    if (typeof this.#accumulator === 'number') {
+                        this.#x = this.#accumulator;
+                    }
+                    break;
+                case 0xA8:  // TAY
+                    if (typeof this.#accumulator === 'number') {
+                        this.#y = this.#accumulator;
+                    }
+                    break;
+                case 0xBA:  // TXA
+                    this.#accumulator = this.#x;
+                    break
+                case 0x98:  // TYA
+                    this.#accumulator = this.#y;
+                    break;
+                case 0xE8:  // INX
+                    this.#x++;
+                    break;
+                case 0xC8:  // INY
+                    this.#y++;
                     break;
             }
 
