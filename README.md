@@ -22,7 +22,7 @@ This is still in EARLY WIP, and I'm not sure I'll be able to do everything I wan
 ## How to use:
 By this *CDN*!
 
-https://cdn.jsdelivr.net/npm/6502web/dist/6502web.min.js
+https://cdn.jsdelivr.net/npm/6502web/src/6502web.js
 
 ## Loading your .bin file
 Your assembled 6502 binary can be loaded like this:

@@ -76,7 +76,7 @@ class Program {
                 break;
             case 3: // move to element's parent
                 if (this.#lastElement !== document.body) {
-                    this.#lastElement = this.#lastElement.parentElement();
+                    this.#lastElement = this.#lastElement.parentElement;
                 }
                 break;
             case 4: // set classname
