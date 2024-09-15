@@ -154,6 +154,16 @@ class Program {
                     addHTMLBinding(this.#lastElement, BindingType.Y);
                 }
                 break;
+            case 7:  // multiply
+                if (typeof this.#accumulator === 'number' && typeof this.#memory[70] === 'number') {
+                    this.#accumulator = this.#memory[70] * this.#accumulator;
+                }
+                break;
+            case 8:  // divide
+                if (typeof this.#accumulator === 'number' && typeof this.#memory[70] === 'number') {
+                    this.#accumulator = this.#memory[70] / this.#accumulator;
+                }
+                break;
         }
     }
 
@@ -219,9 +229,7 @@ class Program {
         while (this.#pc < this.#buffer.length) {
             this.runInstruction(this.#buffer[this.#pc] as number);
             this.#pc++;
-
         }
-        
     }
 }
 

@@ -133,3 +133,13 @@ ___
 
 ### $6
 #### Bind Y to recently created element
+
+___
+
+### $7 [$46]
+#### Multiply value at $46 by value stored in the accumulator (result is saved to accumulator)
+
+___
+
+### $8 [$46]
+#### Divide value at $46 by value stored in the accumulator (result is saved to accumulator)

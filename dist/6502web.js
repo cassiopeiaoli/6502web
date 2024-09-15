@@ -150,6 +150,16 @@ class Program {
                     addHTMLBinding(__classPrivateFieldGet(this, _Program_lastElement, "f"), BindingType.Y);
                 }
                 break;
+            case 7:
+                if (typeof __classPrivateFieldGet(this, _Program_accumulator, "f") === 'number' && typeof __classPrivateFieldGet(this, _Program_memory, "f")[70] === 'number') {
+                    __classPrivateFieldSet(this, _Program_accumulator, __classPrivateFieldGet(this, _Program_memory, "f")[70] * __classPrivateFieldGet(this, _Program_accumulator, "f"), "f");
+                }
+                break;
+            case 8:
+                if (typeof __classPrivateFieldGet(this, _Program_accumulator, "f") === 'number' && typeof __classPrivateFieldGet(this, _Program_memory, "f")[70] === 'number') {
+                    __classPrivateFieldSet(this, _Program_accumulator, __classPrivateFieldGet(this, _Program_memory, "f")[70] / __classPrivateFieldGet(this, _Program_accumulator, "f"), "f");
+                }
+                break;
         }
     }
     runInstruction(opCode) {

@@ -1,6 +1,6 @@
 {
   "name": "6502web",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "6502 runtime for the web!",
   "main": "src/6502.js",
   "scripts": {
