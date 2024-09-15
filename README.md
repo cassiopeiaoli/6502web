@@ -22,7 +22,7 @@ This is still in EARLY WIP, and I'm not sure I'll be able to do everything I wan
 ## How to use:
 By this *CDN*!
 
-https://cdn.jsdelivr.net/npm/6502web/dist/6502web.min.js
+https://cdn.jsdelivr.net/npm/6502web/dist/6502web.js
 
 ## Loading your .bin file
 Your assembled 6502 binary can be loaded like this:
@@ -59,19 +59,21 @@ $\<address> [\<arguments>]
 #### Create HTML Element
 Create an HTML Element and saves it as the recently created one
 
-*$46* should store numerical ID of the element you want to create, refer to this list:
-1.  \<p>
-2.  \<b>
-3.  \<i>
-4.  \<span>
-5.  \<button>
-6.  \<div>
-7.  \<h1>
-8.  \<h2>
-9.  \<h3>
-10. \<h4>
-11. \<h5>
-12. \<h6>
+*$46* should store numerical ID of the element you want to create, refer to 
+this list:
+
+0.  \<p>
+1.  \<b>
+2.  \<i>
+3.  \<span>
+4.  \<button>
+5.  \<div>
+6.  \<h1>
+7.  \<h2>
+8.  \<h3>
+9. \<h4>
+10. \<h5>
+11. \<h6>
 
 ___
 
@@ -92,15 +94,16 @@ ___
 #### Add event listener
 
 *$46* should store numerical ID of the JS event you want to listen for, refer to this list:
-1.  click
-2.  mousedown
-3.  mouseup
-4.  dblckick
-5.  mousemove
-6.  mouseover
-7.  mouseout
-8.  mouseenter
-9.  mouseleave
+
+0.  click
+1.  mousedown
+2.  mouseup
+3.  dblckick
+4.  mousemove
+5.  mouseover
+6.  mouseout
+7.  mouseenter
+8.  mouseleave
 
 *$47* should store INDEX of the function from shared memory that should be called upon event detection.
 
@@ -120,3 +123,13 @@ Rest of the arguments should be ASCII codes for characters that will be read
 based on the value stored in *$46*
 
 If your accumulator has a loaded string (for example, from **shared memory**) it shall be used as the className of your recently created HTML element. This **WILL** ignore all of your passed arguments.
+
+___
+
+### $5
+#### Bind X to recently created element
+
+___
+
+### $6
+#### Bind Y to recently created element
