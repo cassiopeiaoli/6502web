@@ -11,7 +11,7 @@ Your immediate question probably is: (and should be) **why??**
 
 The answer might shock you:
 
-*i just think it's really fucking funny ok*
+*i just think it's really funny ok*
 
 This is still in EARLY WIP, and I'm not sure I'll be able to do everything I want with this project. I'm mostly doing it for the bit, but at the same time I want to use it to write my own website.
 
