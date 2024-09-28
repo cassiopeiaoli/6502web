@@ -32,7 +32,7 @@ var BindingType;
 ;
 const bindings = new Map([]);
 const htmlElements = [
-    "p", 'b', 'i', 'span', 'button', "div", "h1", "h2", "h3", "h4", "h5", "h6"
+    "p", 'b', 'i', 'span', 'button', "div", "h1", "h2", "h3", "h4", "h5", "h6", "a", "img"
 ];
 const jsEvents = [
     "click", "mousedown", "mouseup", "dblclick", "mousemove", "mouseover", "mouseout", "mouseenter", "mouseleave"
