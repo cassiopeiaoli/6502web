@@ -22,6 +22,10 @@ const jsEvents: Array<string> = [
     "click", "mousedown", "mouseup", "dblclick", "mousemove", "mouseover", "mouseout", "mouseenter", "mouseleave"
 ];
 
+const attributes: Array<string> = [
+    "src", "href", "class", "id"
+];
+
 function addHTMLBinding(element: HTMLElement, typeOfBinding: BindingType): void {
     bindings.set(element, typeOfBinding);
 }
@@ -80,6 +84,10 @@ class Program {
 
     numberToHTMLEvent(num: number) : string {
         return jsEvents[num] === undefined ? 'click' : jsEvents[num];
+    }
+
+    numberToAttribute(num: number) : string {
+        return attributes[num] === undefined ? 'attribute_not_found' : attributes[num];
     }
 
     runBuiltinFunction(address: number) {
@@ -162,6 +170,12 @@ class Program {
             case 8:  // divide
                 if (typeof this.#accumulator === 'number' && typeof this.#memory[70] === 'number') {
                     this.#accumulator = this.#memory[70] / this.#accumulator;
+                }
+                break;
+            case 9: // set attribute
+                const attribute = this.numberToAttribute(this.#memory[70]);
+                if (this.#lastElement && this.#accumulator) {
+                    this.#lastElement.setAttribute(attribute, this.#accumulator.toString());
                 }
                 break;
         }

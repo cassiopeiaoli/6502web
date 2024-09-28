@@ -37,6 +37,9 @@ const htmlElements = [
 const jsEvents = [
     "click", "mousedown", "mouseup", "dblclick", "mousemove", "mouseover", "mouseout", "mouseenter", "mouseleave"
 ];
+const attributes = [
+    "src", "href", "class", "id"
+];
 function addHTMLBinding(element, typeOfBinding) {
     bindings.set(element, typeOfBinding);
 }
@@ -87,6 +90,9 @@ class Program {
     }
     numberToHTMLEvent(num) {
         return jsEvents[num] === undefined ? 'click' : jsEvents[num];
+    }
+    numberToAttribute(num) {
+        return attributes[num] === undefined ? 'attribute_not_found' : attributes[num];
     }
     runBuiltinFunction(address) {
         switch (address) {
@@ -158,6 +164,12 @@ class Program {
             case 8:
                 if (typeof __classPrivateFieldGet(this, _Program_accumulator, "f") === 'number' && typeof __classPrivateFieldGet(this, _Program_memory, "f")[70] === 'number') {
                     __classPrivateFieldSet(this, _Program_accumulator, __classPrivateFieldGet(this, _Program_memory, "f")[70] / __classPrivateFieldGet(this, _Program_accumulator, "f"), "f");
+                }
+                break;
+            case 9:
+                const attribute = this.numberToAttribute(__classPrivateFieldGet(this, _Program_memory, "f")[70]);
+                if (__classPrivateFieldGet(this, _Program_lastElement, "f") && __classPrivateFieldGet(this, _Program_accumulator, "f")) {
+                    __classPrivateFieldGet(this, _Program_lastElement, "f").setAttribute(attribute, __classPrivateFieldGet(this, _Program_accumulator, "f").toString());
                 }
                 break;
         }

@@ -42,7 +42,7 @@ This dubious piece of technology supports shared memory between 6502 and JS. You
 Then those fields can be loaded into the accumulator. Shared memory has only
 10 fields, so use them as best as you can!
 
-They range from $36 to $3C.
+They range from $32 to $3C.
 
 **If** a field you're trying to load is a function, that function will be immediately called.
 
@@ -143,3 +143,8 @@ ___
 
 ### $8 [$46]
 #### Divide value at $46 by value stored in the accumulator (result is saved to accumulator)
+
+___
+
+### 9 [$46]
+#### Set attribute on HTML element
