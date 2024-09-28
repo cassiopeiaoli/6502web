@@ -15,7 +15,7 @@ enum BindingType {
 const bindings: Map<HTMLElement, BindingType> = new Map([]);
 
 const htmlElements: Array<string> = [
-    "p", 'b', 'i', 'span', 'button', "div", "h1", "h2", "h3", "h4", "h5", "h6"
+    "p", 'b', 'i', 'span', 'button', "div", "h1", "h2", "h3", "h4", "h5", "h6", "a", "img"
 ];
 
 const jsEvents: Array<string> = [
